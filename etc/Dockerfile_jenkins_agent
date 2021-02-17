@@ -10,6 +10,6 @@ COPY /etc/centos.repo /etc/yum.repos.d/centos.repo
 
 # install dependenct packages for postgresql, selenium...
 RUN yum install -y ${EPEL_URL} \
-    && yum install -y postgresql skopeo \
+    && yum install -y postgresql skopeo python3 python-pip \
     && rm -rf /var/tmp/*
 USER 1001
