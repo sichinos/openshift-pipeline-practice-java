@@ -13,5 +13,4 @@ RUN yum install -y ${EPEL_URL} \
     && yum install -y postgresql skopeo chromedriver ipa-pgothic-fonts.noarch python-pip \
     && yum install -y  ${CHROME_URL} \
     && rm -rf /var/tmp/*
-RUN pip install selenium
 USER 1001
