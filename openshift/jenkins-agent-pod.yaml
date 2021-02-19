@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 spec:
   serviceAccountName: jenkins
-    volumes:
+  volumes:
     - name: m2-volume
       persistentVolumeClaim:
         claimName: user01-jenkins-agent-m2
