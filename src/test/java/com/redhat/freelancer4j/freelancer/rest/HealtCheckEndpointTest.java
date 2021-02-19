@@ -33,6 +33,6 @@ public class HealtCheckEndpointTest {
 
     @Test
     public void invokeHello() throws Exception {
-        given().get("/hello").then().assertThat().statusCode(200).body("hello", equalTo("world"));
+        given().get("/hello").then().assertThat().statusCode(200).body("hello", equalTo("world!!!!!"));
     }
 }
