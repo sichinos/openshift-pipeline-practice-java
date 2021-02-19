@@ -10,6 +10,9 @@ spec:
     - name: jnlp
       image: image-registry.openshift-image-registry.svc:5000/app-devops/custom-jenkins-agent-maven
       args: ['$(JENKINS_SECRET)', '$(JENKINS_NAME)']
+      volumemounts: 
+        - mountPath: "/home/jenkins/.m2"
+          name: m2-volume
       tty: false
       resources:
         requests:
