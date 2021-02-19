@@ -12,7 +12,7 @@ spec:
       args: ['$(JENKINS_SECRET)', '$(JENKINS_NAME)']
       volumemounts: 
         - mountPath: "/home/jenkins/.m2"
-          name: m2-volume
+          name: pvc-8bde8168-8035-427a-8b39-a89027ec14de
       tty: false
       resources:
         requests:
