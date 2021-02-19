@@ -8,7 +8,7 @@ spec:
         claimName: user01-jenkins-agent-m2
   containers:
     - name: jnlp
-      image: image-registry.openshift-image-registry.svc:5000/app-devops/custom-jenkins-agent-maven
+      image: image-registry.openshift-image-registry.svc:5000/app-devops/custom-jenkins-agent
       args: ['$(JENKINS_SECRET)', '$(JENKINS_NAME)']
       volumemounts: 
         - mountPath: "/home/jenkins/.m2"
