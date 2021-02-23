@@ -83,7 +83,7 @@ pipeline {
           return env.GIT_BRANCH == "${deploy_branch}" || params.FORCE_FULL_BUILD
         }
       }
-
+/*
       steps {
         echo "deploy"
         script {
@@ -138,5 +138,6 @@ pipeline {
         }
       }
     }
+*/    
   }
 }
