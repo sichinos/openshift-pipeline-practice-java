@@ -74,7 +74,6 @@ pipeline {
           }
         }
       }
-
     }
 /*
     stage('deploy') {
@@ -136,7 +135,7 @@ pipeline {
           }
         }
       }
-    }
-*/    
+    } 
   }
+*/
 }
