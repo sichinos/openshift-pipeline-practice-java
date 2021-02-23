@@ -74,68 +74,6 @@ pipeline {
           }
         }
       }
-    }
-/*
-    stage('deploy') {
-      when {
-        expression {
-          return env.GIT_BRANCH == "${deploy_branch}" || params.FORCE_FULL_BUILD
-        }
-      }
-      steps {
-        echo "deploy"
-        script {
-          openshift.withCluster() {
-            openshift.withProject("${deploy_project}") {
-              // Apply application manifests
-              //sh "oc process -f openshift/templates/application-deploy.yaml -p APP_IMAGE=${app_image} APP_IMAGE_TAG=${env.GIT_COMMIT} | oc apply -n ${deploy_project} -f -"
-              openshift.apply(openshift.process('-f', 'openshift/application-deploy.yaml', '-p', "NAME=${app_name}", '-p', "APP_IMAGE=${app_image}", "-p", "APP_IMAGE_TAG=${env.GIT_COMMIT}"))
-
-              // Wait for application to be deployed
-              def dc = openshift.selector("dc", "${app_name}").object()
-              def dc_version = dc.status.latestVersion
-              def rc = openshift.selector("rc", "${app_name}-${dc_version}").object()
-
-              echo "Waiting for ReplicationController ${app_name}-${dc_version} to be ready"
-              while (rc.spec.replicas != rc.status.readyReplicas) {
-                sleep 5
-                rc = openshift.selector("rc", "${app_name}-${dc_version}").object()
-              }
-            }
-          }
-        }
-      }
-    }
-
-    stage('integration-test') {
-      when {
-        expression {
-          return env.GIT_BRANCH == "${deploy_branch}" || params.FORCE_FULL_BUILD
-        }
-      }
-
-      steps {
-        echo "integration-test, e2e-test"
-        script {
-          openshift.withCluster() {
-            openshift.withProject("${deploy_project}") {
-              def dc = openshift.selector("route", "${app_name}").object()
-              def url = dc.spec.host
-              echo "${url}"
-              while (true) {
-                def app_status = sh(returnStdout: true, script: "curl ${url}/hello -o /dev/null -w '%{http_code}' -s").trim()
-                if(app_status == "200") {
-                  break;
-                }
-                sleep 5
-              }
-              // selenium test
-              sh "python src/test/selenium/sample.py http://${url}/health"
-            }
-          }
-        }
-      }
-*/
     }   
   }
 }
