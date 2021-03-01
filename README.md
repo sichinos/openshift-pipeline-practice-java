@@ -1,4 +1,3 @@
-test
 Pipeline practice sample.  
 Implementation: Spring Boot, PostgreSQL
 
